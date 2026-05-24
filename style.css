@@ -621,11 +621,11 @@
             background: var(--flores-black);
             color: white;
             text-align: center;
-            padding: 4rem 1.5rem;
             position: relative;
             overflow: hidden;
+            padding: 3.5rem 1rem;
         }
-        
+
         .countdown:before {
             content: '';
             position: absolute;
@@ -633,10 +633,12 @@
             background: url('public/images/ikat-pattern.png') repeat;
             opacity: 0.05;
         }
-        
+
         .countdown-content {
             position: relative;
             z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .countdown h3 {
@@ -647,36 +649,43 @@
             color: var(--flores-cream);
         }
         
+        /* Container utama item hitung mundur */
         .countdown-grid {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            max-width: 600px;
-            margin: 0 auto;
+            gap: 12px; /* Jarak antar kotak di mobile */
+            flex-wrap: nowrap; /* Memaksa tetap 1 baris di HP, tidak turun ke bawah */
+            padding: 0 5px;
         }
         
+        /* Styling untuk setiap kotak angka */
         .count-item {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 1.5rem 1rem;
-            min-width: 110px;
+            padding: 1rem 0.5rem;
+            flex: 1; /* Membagi ukuran rata sama besar */
+            min-width: 0; /* Mencegah elemen meluap di screen kecil */
+            border-radius: 12px;
         }
-        
+
+        /* Ukuran Angka */
         .count-item .number {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
             color: var(--flores-gold);
             line-height: 1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            /* Menggunakan clamp agar otomatis mengecil di HP dan membesar di laptop */
+            font-size: clamp(1.6rem, 5vw, 2.5rem); 
+            font-weight: 700;
         }
         
+        /* Ukuran Label Teks (Hari, Jam, dll) */
         .count-item .label {
-            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             opacity: 0.8;
+            font-size: clamp(0.65rem, 2vw, 0.8rem);
         }
         
         /* Gallery */
